@@ -1,0 +1,18 @@
+{
+  "name": "counseling-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "client",
+    "infra"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=client",
+    "lint": "npm run lint --workspace=client",
+    "dev": "npm run dev --workspace=client",
+    "test": "npm run test --workspace=client"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
