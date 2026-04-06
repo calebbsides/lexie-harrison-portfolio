@@ -51,6 +51,7 @@ export default function IntroductionSection() {
               height: { xs: 160, md: 220 },
               borderRadius: '50%',
               objectFit: 'cover',
+              objectPosition: 'center top',
               flexShrink: 0,
               border: '4px solid',
               borderColor: 'primary.main',
