@@ -1,6 +1,8 @@
 # Alexandra Harrison — School Counseling Portfolio
 
-A professional school counseling portfolio built as a static single-page application (SPA). Deployed to AWS S3 + CloudFront via GitHub Actions.
+A professional school counseling portfolio built as a static single-page application (SPA). Deployed to AWS S3 + CloudFront via GitHub Actions. 
+
+Deployed URL: https://duvayfl1fh3lr.cloudfront.net
 
 ## Tech Stack
 
