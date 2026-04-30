@@ -1,24 +1,33 @@
-import { Box, Container, Typography } from '@mui/material';
-import { contactInfo } from '../../data/contact';
-import ContactForm from '../ContactForm';
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import ContactForm from "../ContactForm";
+import { contactInfo } from "../../data/contact";
 
 export default function ContactSection() {
   return (
-    <Container maxWidth="md" sx={{ py: { xs: 6, md: 10 } }}>
-      <Box>
-        <Typography variant="h2" color="primary" gutterBottom>
-          Contact
-        </Typography>
-        <Typography variant="body1" gutterBottom>
+    <Box sx={{ display: "flex", gap: { xs: 4, md: 10 }, height: "100%", alignItems: "center" }}>
+      {/* Left: heading + contact info */}
+      <Box sx={{ flexShrink: 0, minWidth: 200, display: "flex", flexDirection: "column", gap: 2 }}>
+        <Box>
+          <Typography variant="overline" color="primary" sx={{ letterSpacing: 3, fontWeight: 600 }}>
+            Get in Touch
+          </Typography>
+          <Typography variant="h1" color="text.primary" gutterBottom>
+            Contact
+          </Typography>
+        </Box>
+        <Typography variant="body1" color="text.secondary">
           <strong>Email:</strong> {contactInfo.email}
         </Typography>
-        <Typography variant="body1" gutterBottom>
+        <Typography variant="body1" color="text.secondary">
           <strong>Service Area:</strong> {contactInfo.serviceArea}
         </Typography>
-        <Box sx={{ mt: 4 }}>
-          <ContactForm />
-        </Box>
       </Box>
-    </Container>
+
+      {/* Right: form */}
+      <Box sx={{ flex: 1, minWidth: 0 }}>
+        <ContactForm />
+      </Box>
+    </Box>
   );
 }
