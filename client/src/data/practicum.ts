@@ -2,7 +2,7 @@ import type { PracticumEntry } from './types';
 
 export const practicumEntries: PracticumEntry[] = [
   {
-    site: 'Lorem Ipsum Middle School',
+    site: 'Shallowford Falls Elementary',
     supervisor: 'Site Supervisor, M.Ed., LPC',
     hoursCompleted: 300,
     primaryResponsibilities: [
@@ -14,9 +14,11 @@ export const practicumEntries: PracticumEntry[] = [
     ],
     evaluationSummary:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    pdfUrl: '/practicum/Eval.pdf',
+    pdfLabel: 'Supervisor Evaluation',
   },
   {
-    site: 'Dolor Sit Amet Elementary School',
+    site: 'Georgia State University',
     supervisor: 'Site Supervisor, Ed.S., NCSP',
     hoursCompleted: 100,
     primaryResponsibilities: [
@@ -24,5 +26,7 @@ export const practicumEntries: PracticumEntry[] = [
       'Duis aute irure dolor in reprehenderit in voluptate velit',
       'Ut enim ad minim veniam, quis nostrud exercitation ullamco',
     ],
+    pdfUrl: '/practicum/Timesheet 5.pdf',
+    pdfLabel: 'Timesheet',
   },
 ];

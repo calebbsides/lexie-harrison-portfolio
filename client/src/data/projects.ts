@@ -1,25 +1,37 @@
 import type { Project } from './types';
 
+export const lessonPlan: Project = {
+  title: 'Lesson Plan',
+  description:
+    'A structured lesson plan developed for classroom guidance curriculum delivery.',
+  dateOrContext: 'Spring 2023',
+  category: 'lesson-plan',
+  attachmentUrl: '/projects-and-presentations/Lesson Plan.pdf',
+};
+
 export const projects: Project[] = [
   {
-    title: 'Lorem Ipsum Lesson Plan — Grades 6–8',
+    title: 'Career Theory for Nontraditional Learners',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+      'An exploration of career development theories applied to nontraditional student populations.',
     dateOrContext: 'Spring 2023',
-    category: 'lesson-plan',
-  },
-  {
-    title: 'Dolor Sit Amet Research Project',
-    description:
-      'Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.',
-    dateOrContext: 'December 2022',
     category: 'research',
+    attachmentUrl: '/projects-and-presentations/Career Theory Nontraditional Learners.pdf',
   },
   {
-    title: 'Lorem Ipsum Professional Development Workshop',
+    title: 'Developmental Presentation — High School',
     description:
-      'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.',
+      'A developmental counseling presentation designed for high school students.',
+    dateOrContext: 'Fall 2022',
+    category: 'presentation',
+    attachmentUrl: '/projects-and-presentations/Developmental Presentation - High School.pdf',
+  },
+  {
+    title: 'LGBTQ+ Group Presentation',
+    description:
+      'A group counseling presentation focused on supporting LGBTQ+ youth in school settings.',
     dateOrContext: 'October 2023',
-    category: 'workshop',
+    category: 'presentation',
+    attachmentUrl: '/projects-and-presentations/LGBTQ+ Group Presentation.pdf',
   },
 ];

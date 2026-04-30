@@ -1,14 +1,110 @@
+import { useState, useCallback } from 'react';
+import { Document, Page, pdfjs } from 'react-pdf';
+import 'react-pdf/dist/Page/AnnotationLayer.css';
+import 'react-pdf/dist/Page/TextLayer.css';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
+import Chip from '@mui/material/Chip';
 import Alert from '@mui/material/Alert';
+import IconButton from '@mui/material/IconButton';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { practicumEntries } from '../../data/practicum';
+import type { PracticumEntry } from '../../data/types';
+
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.mjs',
+  import.meta.url,
+).toString();
+
+function PracticumDocument({ entry }: { entry: PracticumEntry }) {
+  const [numPages, setNumPages] = useState<number>(0);
+  const [pageNumber, setPageNumber] = useState(1);
+
+  const onLoadSuccess = useCallback(({ numPages }: { numPages: number }) => {
+    setNumPages(numPages);
+    setPageNumber(1);
+  }, []);
+
+  return (
+    <Box>
+      {/* Label row */}
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1.5 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+          <Typography variant="subtitle1" fontWeight={600}>
+            {entry.site}
+          </Typography>
+          {entry.pdfLabel && (
+            <Chip label={entry.pdfLabel} color="primary" size="small" />
+          )}
+        </Box>
+
+        {/* Pagination in title row */}
+        {numPages > 1 && (
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+            <IconButton
+              size="small"
+              onClick={() => setPageNumber((p) => Math.max(1, p - 1))}
+              disabled={pageNumber <= 1}
+              aria-label="Previous page"
+            >
+              <NavigateBeforeIcon />
+            </IconButton>
+            <Typography variant="body2" color="text.secondary">
+              {pageNumber} / {numPages}
+            </Typography>
+            <IconButton
+              size="small"
+              onClick={() => setPageNumber((p) => Math.min(numPages, p + 1))}
+              disabled={pageNumber >= numPages}
+              aria-label="Next page"
+            >
+              <NavigateNextIcon />
+            </IconButton>
+          </Box>
+        )}
+      </Box>
+
+      {/* Document */}
+      {entry.pdfUrl && (
+        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        <Box
+          sx={{
+            boxShadow: 4,
+            borderRadius: 1,
+            overflow: 'hidden',
+            display: 'inline-block',
+          }}
+          maxWidth="md"
+        >
+          <Document
+            file={entry.pdfUrl}
+            onLoadSuccess={onLoadSuccess}
+            loading={
+              <Box sx={{ p: 6, textAlign: 'center', bgcolor: 'grey.100' }}>
+                <Typography variant="body2" color="text.secondary">Loading...</Typography>
+              </Box>
+            }
+            error={
+              <Box sx={{ p: 6, textAlign: 'center', bgcolor: 'grey.100' }}>
+                <Typography variant="body2" color="error">Failed to load document.</Typography>
+              </Box>
+            }
+          >
+            <Page
+              pageNumber={pageNumber}
+              width={Math.min(900, typeof window !== 'undefined' ? window.innerWidth - 48 : 900)}
+              renderTextLayer
+              renderAnnotationLayer
+            />
+          </Document>
+        </Box>
+        </Box>
+      )}
+    </Box>
+  );
+}
 
 export default function PracticumSection() {
   return (
@@ -16,49 +112,10 @@ export default function PracticumSection() {
       <Typography variant="h2" color="primary" gutterBottom>
         Practicum &amp; Internship Experiences
       </Typography>
-      <Alert severity="info" sx={{ mb: 4 }}>
-        Work Samples Notice: All work samples included in this section have had student names and
-        identifying information redacted to protect confidentiality.
-      </Alert>
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+
+      <Box sx={{ display: 'grid', gridTemplateColumns: '1fr', gap: 6 }}>
         {practicumEntries.map((entry, index) => (
-          <Card variant="outlined" key={index}>
-            <CardContent>
-              <Typography variant="h6" fontWeight="bold" gutterBottom>
-                {entry.site}
-              </Typography>
-              <Typography variant="body2" color="text.secondary" gutterBottom>
-                Supervisor: {entry.supervisor}
-              </Typography>
-              <Typography variant="body2" gutterBottom>
-                Hours Completed: <strong>{entry.hoursCompleted}</strong>
-              </Typography>
-              <Typography variant="subtitle2" sx={{ mt: 1.5, mb: 0.5 }}>
-                Primary Responsibilities
-              </Typography>
-              <List dense disablePadding>
-                {entry.primaryResponsibilities.map((responsibility, i) => (
-                  <ListItem key={i} disableGutters sx={{ py: 0.25 }}>
-                    <ListItemText
-                      primary={responsibility}
-                      primaryTypographyProps={{ variant: 'body2' }}
-                    />
-                  </ListItem>
-                ))}
-              </List>
-              {entry.evaluationSummary && (
-                <>
-                  <Divider sx={{ my: 1.5 }} />
-                  <Typography variant="subtitle2" gutterBottom>
-                    Supervisor Evaluation
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {entry.evaluationSummary}
-                  </Typography>
-                </>
-              )}
-            </CardContent>
-          </Card>
+          <PracticumDocument key={index} entry={entry} />
         ))}
       </Box>
     </Container>

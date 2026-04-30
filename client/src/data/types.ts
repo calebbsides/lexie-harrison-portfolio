@@ -19,12 +19,14 @@ export interface LeadershipActivity {
   description: string;
   startDate?: string;
   endDate?: string;
+  assetUrl?: string;
 }
 
 export interface Artifact {
   title: string;
   type: 'reflection' | 'counseling-plan' | 'case-study';
   summary: string;
+  pdfUrl?: string;
   // No identifying information — all PII removed before inclusion
 }
 
@@ -34,6 +36,8 @@ export interface PracticumEntry {
   hoursCompleted: number;
   primaryResponsibilities: string[];
   evaluationSummary?: string;
+  pdfUrl?: string;
+  pdfLabel?: string;
 }
 
 export interface ProfessionalDevelopment {

@@ -2,18 +2,45 @@ import type { Credential } from './types';
 
 export const credentials: Credential[] = [
   {
-    title: 'Lorem Ipsum Counselor License',
-    issuingOrganization: 'State Department of Education',
-    dateObtained: '2023-05-15',
+    title: 'ASIST',
+    issuingOrganization: '',
+    dateObtained: '2023-01-01',
+    documentUrl: '/certs/ASIST.png',
   },
   {
-    title: 'CPR/First Aid Certification',
-    issuingOrganization: 'Lorem Ipsum Red Cross',
-    dateObtained: '2024-01-10',
+    title: 'Citi Completion Certificate',
+    issuingOrganization: '',
+    dateObtained: '2023-01-01',
+    documentUrl: '/certs/Citi Completion Certificate.pdf',
   },
   {
-    title: 'National Certified Counselor (NCC)',
-    issuingOrganization: 'Lorem Ipsum Board for Certified Counselors',
-    dateObtained: '2023-08-01',
+    title: 'Mandated Reporter Certification',
+    issuingOrganization: '',
+    dateObtained: '2023-01-01',
+    documentUrl: '/certs/Mandated Reporter Cert.pdf',
+  },
+  {
+    title: 'Nursing License',
+    issuingOrganization: '',
+    dateObtained: '2023-01-01',
+    documentUrl: '/certs/Nursing License.png',
+  },
+  {
+    title: 'PMH-BC',
+    issuingOrganization: '',
+    dateObtained: '2023-01-01',
+    documentUrl: '/certs/PMH-BC.png',
+  },
+  {
+    title: 'Psychological First Aid (PFA) Certificate',
+    issuingOrganization: '',
+    dateObtained: '2023-01-01',
+    documentUrl: '/certs/Psychological First Aid (PFA) Certificate.pdf',
+  },
+  {
+    title: 'Red Cross',
+    issuingOrganization: '',
+    dateObtained: '2023-01-01',
+    documentUrl: '/certs/Red Cross.png',
   },
 ];

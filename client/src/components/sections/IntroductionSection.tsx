@@ -7,18 +7,8 @@ import Button from '@mui/material/Button';
 const CONTENT = {
   name: 'Alexandra Harrison',
   title: 'School Counselor',
-  tagline: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
   headshotSrc: '/headshot.jpg',
   headshotAlt: 'Alexandra Harrison, School Counselor',
-  biography:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ' +
-    'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ' +
-    'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-  philosophy:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ' +
-    'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ' +
-    'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ' +
-    'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 };
 
 export default function IntroductionSection() {
@@ -67,13 +57,6 @@ export default function IntroductionSection() {
           <Typography variant="h3" color="text.secondary" gutterBottom>
             {CONTENT.title}
           </Typography>
-          <Typography
-            variant="h6"
-            component="p"
-            sx={{ fontStyle: 'italic', mt: 1, mb: 3, color: 'text.secondary' }}
-          >
-            {CONTENT.tagline}
-          </Typography>
           <Button
             variant="contained"
             color="primary"
@@ -91,7 +74,7 @@ export default function IntroductionSection() {
           About Me
         </Typography>
         <Typography variant="body1" color="text.primary">
-          {CONTENT.biography}
+          Type here
         </Typography>
       </Box>
 
@@ -101,7 +84,7 @@ export default function IntroductionSection() {
           Counseling Philosophy
         </Typography>
         <Typography variant="body1" color="text.primary">
-          {CONTENT.philosophy}
+          Type here
         </Typography>
       </Box>
     </Container>

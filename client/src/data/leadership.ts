@@ -2,26 +2,24 @@ import type { LeadershipActivity } from './types';
 
 export const leadershipActivities: LeadershipActivity[] = [
   {
-    organization: 'American School Counselor Association (ASCA)',
+    organization: 'Georgia School Counselor Association (GSCA)',
     role: 'Student Member',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.',
-    startDate: '2021-09-01',
+      'Member of the Georgia School Counselor Association, connecting school counselors and supporting students across the state as a School Counselor candidate at Georgia State University.',
+    assetUrl: '/leadership-and-advocacy/GSCA.png',
   },
   {
-    organization: 'Lorem Ipsum State Counselor Association',
-    role: 'Graduate Student Representative',
+    organization: 'Professional Association of Georgia Educators (PAGE)',
+    role: 'Member',
     description:
-      'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.',
-    startDate: '2022-09-01',
-    endDate: '2023-05-31',
+      'Active member of the Professional Association of Georgia Educators, a statewide organization dedicated to supporting and advocating for educators throughout Georgia.',
+    assetUrl: '/leadership-and-advocacy/PAGE Membership.png',
   },
   {
-    organization: 'Dolor Sit Amet Youth Outreach Program',
-    role: 'Volunteer Mentor',
+    organization: 'Chi Sigma Iota — Georgia State University, Chi Epsilon Chapter',
+    role: 'Member',
     description:
-      'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.',
-    startDate: '2022-01-15',
-    endDate: '2023-12-15',
+      'Inducted into Chi Sigma Iota, the Counseling Academic and Professional Honor Society International, in recognition of scholastic and professional excellence and furthering the mission of promoting excellence in the profession of counseling and counselor education.',
+    assetUrl: '/leadership-and-advocacy/CSI.png',
   },
 ];

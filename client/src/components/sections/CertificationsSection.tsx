@@ -19,14 +19,29 @@ export default function CertificationsSection() {
       <Grid container spacing={3} sx={{ mt: 1 }}>
         {credentials.map((credential) => (
           <Grid item xs={12} sm={6} md={4} key={credential.title}>
-            <Card variant="outlined" sx={{ height: '100%' }}>
+            <Card
+              variant="outlined"
+              sx={{
+                height: '100%',
+                cursor: credential.documentUrl ? 'pointer' : 'default',
+                transition: 'box-shadow 0.2s',
+                '&:hover': credential.documentUrl ? { boxShadow: 4 } : {},
+              }}
+              onClick={() => {
+                if (credential.documentUrl) {
+                  window.open(credential.documentUrl, '_blank', 'noopener,noreferrer');
+                }
+              }}
+            >
               <CardContent>
                 <Typography variant="h6" fontWeight="bold" gutterBottom>
                   {credential.title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary" gutterBottom>
-                  {credential.issuingOrganization}
-                </Typography>
+                {credential.issuingOrganization && (
+                  <Typography variant="body2" color="text.secondary" gutterBottom>
+                    {credential.issuingOrganization}
+                  </Typography>
+                )}
                 <Typography variant="body2" color="text.secondary">
                   {formatDate(credential.dateObtained)}
                 </Typography>
