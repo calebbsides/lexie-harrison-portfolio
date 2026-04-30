@@ -10,14 +10,33 @@ const CONTENT = {
   headshotAlt: 'Alexandra Harrison, School Counselor',
   biography:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ' +
-    'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ' +
+    'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+  philosophy:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ' +
+    'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ' +
+    'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ' +
+    'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 };
 
 export default function IntroductionSection() {
   const [headshotVisible, setHeadshotVisible] = useState(true);
 
+  const handleScrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 4, md: 8 }, pt: 4 }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: { xs: 'column', md: 'row' },
+        alignItems: { xs: 'flex-start', md: 'center' },
+        gap: { xs: 4, md: 8 },
+        height: '100%',
+      }}
+    >
+      {/* Headshot */}
       {headshotVisible && (
         <Box
           component="img"
@@ -25,8 +44,8 @@ export default function IntroductionSection() {
           alt={CONTENT.headshotAlt}
           onError={() => setHeadshotVisible(false)}
           sx={{
-            width: { xs: 120, md: 180 },
-            height: { xs: 120, md: 180 },
+            width: { xs: 140, md: 200 },
+            height: { xs: 140, md: 200 },
             borderRadius: '50%',
             objectFit: 'cover',
             objectPosition: 'center top',
@@ -36,15 +55,22 @@ export default function IntroductionSection() {
           }}
         />
       )}
+
+      {/* Text */}
       <Box>
-        <Typography variant="overline" color="primary">Portfolio</Typography>
-        <Typography variant="h1" gutterBottom>{CONTENT.name}</Typography>
-        <Typography variant="h3" color="text.secondary" gutterBottom>{CONTENT.title}</Typography>
-        <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 520, mb: 3 }}>
+        <Typography variant="overline" color="primary" sx={{ letterSpacing: 3, fontWeight: 600 }}>
+          Portfolio
+        </Typography>
+        <Typography variant="h1" color="text.primary" gutterBottom>
+          {CONTENT.name}
+        </Typography>
+        <Typography variant="h3" color="text.secondary" gutterBottom>
+          {CONTENT.title}
+        </Typography>
+        <Typography variant="body1" sx={{ mt: 2, mb: 4, color: 'text.secondary', maxWidth: 560 }}>
           {CONTENT.biography}
         </Typography>
-        <Button variant="contained" color="primary" size="large"
-          onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+        <Button variant="contained" color="primary" size="large" onClick={handleScrollToContact}>
           Get in Touch
         </Button>
       </Box>
