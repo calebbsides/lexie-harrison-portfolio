@@ -1,99 +1,50 @@
-import DownloadIcon from "@mui/icons-material/Download";
-import { Paper } from "@mui/material";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import { useEffect, useRef, useState } from "react";
-import { Document, Page, pdfjs } from "react-pdf";
-import "react-pdf/dist/Page/AnnotationLayer.css";
-import "react-pdf/dist/Page/TextLayer.css";
+import DownloadIcon from '@mui/icons-material/Download';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { useEffect, useRef, useState } from 'react';
+import { Document, Page, pdfjs } from 'react-pdf';
+import 'react-pdf/dist/Page/AnnotationLayer.css';
+import 'react-pdf/dist/Page/TextLayer.css';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  "pdfjs-dist/build/pdf.worker.min.mjs",
+  'pdfjs-dist/build/pdf.worker.min.mjs',
   import.meta.url,
 ).toString();
 
+const FILE = '/resume-and-cover-letter/Alexandra Harrison Resume.pdf';
+
 export default function ResumeSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
+  const viewerRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState(0);
 
   useEffect(() => {
-    const el = containerRef.current;
+    const el = viewerRef.current;
     if (!el) return;
-    const observer = new ResizeObserver(([entry]) => {
-      setContainerSize({
-        width: entry.contentRect.width,
-        height: entry.contentRect.height,
-      });
-    });
-    observer.observe(el);
-    return () => observer.disconnect();
+    const ro = new ResizeObserver(([e]) => setHeight(e.contentRect.height));
+    ro.observe(el);
+    return () => ro.disconnect();
   }, []);
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        gap: { xs: 4, md: 8 },
-        flex: 1,
-        minHeight: 0,
-        alignItems: "stretch",
-      }}
-    >
-      {/* Left: title + download */}
-      <Box
-        sx={{
-          flexShrink: 0,
-          display: "flex",
-          flexDirection: "column",
-          gap: 2,
-          minWidth: 180,
-          justifyContent: "center",
-        }}
-      >
-        <Typography
-          variant="overline"
-          color="primary"
-          sx={{ letterSpacing: 3, fontWeight: 600 }}
-        >
-          Documents
-        </Typography>
-        <Typography variant="h2" color="text.primary">
-          Resume
-        </Typography>
-        <Button
-          variant="contained"
-          color="primary"
-          component="a"
-          href="/resume-and-cover-letter/Alexandra Harrison Resume.pdf"
-          download
-          startIcon={<DownloadIcon />}
-          sx={{ alignSelf: "flex-start", mt: 1 }}
-        >
+    <Box sx={{ display: 'flex', gap: { xs: 3, md: 6 }, height: '100%' }}>
+      {/* Sidebar */}
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, pt: 1, flexShrink: 0, minWidth: 160 }}>
+        <Typography variant="overline" color="primary">Documents</Typography>
+        <Typography variant="h2">Resume</Typography>
+        <Button variant="contained" color="primary" component="a" href={FILE} download
+          startIcon={<DownloadIcon />} sx={{ alignSelf: 'flex-start', mt: 1 }}>
           Download
         </Button>
       </Box>
 
-      {/* Right: PDF preview */}
-      <Box
-        ref={containerRef}
-        sx={{
-          flex: 1,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Paper elevation={2}>
-          <Document file="/resume-and-cover-letter/Alexandra Harrison Resume.pdf">
-            <Page
-              pageNumber={1}
-              height={
-                containerSize.height > 0 ? containerSize.height : undefined
-              }
-            />
+      {/* PDF viewer */}
+      <Box ref={viewerRef} sx={{ flex: 1, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        {height > 0 && (
+          <Document file={FILE}>
+            <Page pageNumber={1} height={height} />
           </Document>
-        </Paper>
+        )}
       </Box>
     </Box>
   );
