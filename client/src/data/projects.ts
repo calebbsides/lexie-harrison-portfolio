@@ -6,7 +6,7 @@ export const lessonPlan: Project = {
     'A structured lesson plan developed for classroom guidance curriculum delivery.',
   dateOrContext: 'Spring 2023',
   category: 'lesson-plan',
-  attachmentUrl: '/projects-and-presentations/Lesson Plan.pdf',
+  attachmentUrl: '/projects-and-presentations/lesson-plan.pdf',
 };
 
 export const projects: Project[] = [
@@ -16,7 +16,7 @@ export const projects: Project[] = [
       'An exploration of career development theories applied to nontraditional student populations.',
     dateOrContext: 'Spring 2023',
     category: 'research',
-    attachmentUrl: '/projects-and-presentations/Career Theory Nontraditional Learners.pdf',
+    attachmentUrl: '/projects-and-presentations/career-theory-nontraditional-learners.pdf',
   },
   {
     title: 'Developmental Presentation — High School',
@@ -24,7 +24,7 @@ export const projects: Project[] = [
       'A developmental counseling presentation designed for high school students.',
     dateOrContext: 'Fall 2022',
     category: 'presentation',
-    attachmentUrl: '/projects-and-presentations/Developmental Presentation - High School.pdf',
+    attachmentUrl: '/projects-and-presentations/developmental-presentation-high-school.pdf',
   },
   {
     title: 'LGBTQ+ Group Presentation',
@@ -32,6 +32,6 @@ export const projects: Project[] = [
       'A group counseling presentation focused on supporting LGBTQ+ youth in school settings.',
     dateOrContext: 'October 2023',
     category: 'presentation',
-    attachmentUrl: '/projects-and-presentations/LGBTQ+ Group Presentation.pdf',
+    attachmentUrl: '/projects-and-presentations/lgbtq-group-presentation.pdf',
   },
 ];

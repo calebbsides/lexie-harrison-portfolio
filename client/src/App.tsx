@@ -38,7 +38,9 @@ export default function App() {
           }
         }
       },
-      { threshold: 0.1 },
+      // Trigger when the top of a section crosses the upper 20% of the viewport.
+      // This works regardless of section height.
+      { rootMargin: '-10% 0px -80% 0px', threshold: 0 },
     );
 
     NAV_ITEMS.forEach(({ sectionId }) => {

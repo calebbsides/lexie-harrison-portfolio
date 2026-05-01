@@ -5,11 +5,6 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { credentials } from '../../data/credentials';
 
-function formatDate(iso: string): string {
-  const date = new Date(iso + 'T00:00:00');
-  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-}
-
 export default function CertificationsSection() {
   return (
     <Container maxWidth="lg" sx={{ py: { xs: 6, md: 10 } }}>
@@ -43,7 +38,7 @@ export default function CertificationsSection() {
                   </Typography>
                 )}
                 <Typography variant="body2" color="text.secondary">
-                  {formatDate(credential.dateObtained)}
+                  {credential.dateObtained}
                 </Typography>
               </CardContent>
             </Card>

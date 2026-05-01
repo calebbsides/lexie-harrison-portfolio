@@ -170,9 +170,6 @@ export default function ProjectsSection() {
                   <Typography variant="body2" color="text.secondary" gutterBottom>
                     {project.description}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ mt: 1, fontStyle: 'italic' }}>
-                    {project.dateOrContext}
-                  </Typography>
                 </CardContent>
               </CardActionArea>
             </Card>

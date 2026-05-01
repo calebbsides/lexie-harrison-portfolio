@@ -8,7 +8,6 @@ export interface Credential {
 export interface Project {
   title: string;
   description: string;
-  dateOrContext: string;
   category: 'lesson-plan' | 'research' | 'presentation' | 'workshop';
   attachmentUrl?: string;
 }
@@ -17,8 +16,6 @@ export interface LeadershipActivity {
   organization: string;
   role: string;
   description: string;
-  startDate?: string;
-  endDate?: string;
   assetUrl?: string;
 }
 
@@ -43,7 +40,6 @@ export interface PracticumEntry {
 export interface ProfessionalDevelopment {
   title: string;
   provider: string;
-  date: string;
   certificateUrl?: string;
 }
 
