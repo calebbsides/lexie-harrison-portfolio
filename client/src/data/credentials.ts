@@ -15,7 +15,7 @@ export const credentials: Credential[] = [
   },
   {
     title: 'Mandated Reporter',
-    issuingOrganization: 'Pro Solutions Training ',
+    issuingOrganization: 'Pro Solutions Training',
     dateObtained: 'June 2025',
     documentUrl: '/certs/mandated-reporter-cert.pdf',
   },

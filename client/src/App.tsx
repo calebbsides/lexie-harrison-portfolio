@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Box from "@mui/material/Box";
 import NavBar, { NavItem } from "./components/NavBar";
 import OrnamentalDivider from "./components/OrnamentalDivider";
@@ -25,6 +25,38 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Professional Development", sectionId: "professional-development" },
   { label: "Contact", sectionId: "contact" },
 ];
+
+/** Fades + slides up a section when it enters the viewport. */
+function AnimatedSection({ children, sectionBg, immediate = false }: { children: React.ReactNode; sectionBg?: string; immediate?: boolean }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(immediate);
+
+  useEffect(() => {
+    if (immediate) return;
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold: 0.05 },
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [immediate]);
+
+  return (
+    <Box
+      ref={ref}
+      sx={{
+        bgcolor: sectionBg,
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(24px)",
+        transition: "opacity 0.55s ease, transform 0.55s ease",
+      }}
+    >
+      {children}
+    </Box>
+  );
+}
 
 export default function App() {
   const [activeSection, setActiveSection] = useState<string>("introduction");
@@ -62,29 +94,31 @@ export default function App() {
         return (
         <Box key={sectionId}>
           {index > 0 && <OrnamentalDivider />}
-          <Box id={sectionId} component="section" sx={{ bgcolor: sectionBg }}>
-            {sectionId === "introduction" ? (
-              <IntroductionSection />
-            ) : sectionId === "resume" ? (
-              <ResumeSection />
-            ) : sectionId === "certifications" ? (
-              <CertificationsSection />
-            ) : sectionId === "projects" ? (
-              <ProjectsSection />
-            ) : sectionId === "leadership" ? (
-              <LeadershipSection />
-            ) : sectionId === "artifacts" ? (
-              <ArtifactsSection />
-            ) : sectionId === "practicum" ? (
-              <PracticumSection />
-            ) : sectionId === "professional-development" ? (
-              <ProfessionalDevelopmentSection />
-            ) : sectionId === "contact" ? (
-              <ContactSection />
-            ) : (
-              <h2>{label}</h2>
-            )}
-          </Box>
+          <AnimatedSection sectionBg={index === 0 ? undefined : sectionBg} immediate={index === 0}>
+            <Box id={sectionId} component="section">
+              {sectionId === "introduction" ? (
+                <IntroductionSection />
+              ) : sectionId === "resume" ? (
+                <ResumeSection />
+              ) : sectionId === "certifications" ? (
+                <CertificationsSection />
+              ) : sectionId === "projects" ? (
+                <ProjectsSection />
+              ) : sectionId === "leadership" ? (
+                <LeadershipSection />
+              ) : sectionId === "artifacts" ? (
+                <ArtifactsSection />
+              ) : sectionId === "practicum" ? (
+                <PracticumSection />
+              ) : sectionId === "professional-development" ? (
+                <ProfessionalDevelopmentSection />
+              ) : sectionId === "contact" ? (
+                <ContactSection />
+              ) : (
+                <h2>{label}</h2>
+              )}
+            </Box>
+          </AnimatedSection>
         </Box>
         );
       })}

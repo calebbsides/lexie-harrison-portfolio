@@ -30,9 +30,6 @@ export interface Artifact {
 export interface PracticumEntry {
   site: string;
   supervisor: string;
-  hoursCompleted: number;
-  primaryResponsibilities: string[];
-  evaluationSummary?: string;
   pdfUrl?: string;
   pdfLabel?: string;
 }

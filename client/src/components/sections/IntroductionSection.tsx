@@ -185,14 +185,36 @@ export default function IntroductionSection() {
           <Box
             component="blockquote"
             sx={{
+              position: "relative",
+              background: "linear-gradient(135deg, rgba(0,105,92,0.06) 0%, rgba(67,152,137,0.04) 100%)",
               borderLeft: "4px solid",
               borderColor: "primary.main",
+              borderRadius: "0 12px 12px 0",
               pl: 3,
-              py: 0.5,
+              pr: 2,
+              pt: 3,
+              pb: 2,
               my: 3,
               mx: 0,
             }}
           >
+            {/* Decorative opening quote mark */}
+            <Box
+              aria-hidden="true"
+              sx={{
+                position: "absolute",
+                top: "-4px",
+                left: "10px",
+                fontSize: "3.5rem",
+                lineHeight: 1,
+                color: "primary.light",
+                opacity: 0.35,
+                fontFamily: "Georgia, serif",
+                userSelect: "none",
+              }}
+            >
+              &ldquo;
+            </Box>
             <Typography
               variant="body1"
               sx={{

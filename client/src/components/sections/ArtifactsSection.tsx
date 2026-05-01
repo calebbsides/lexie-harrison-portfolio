@@ -133,7 +133,7 @@ export default function ArtifactsSection({ artifacts = defaultArtifacts }: Artif
         }}
       >
         {artifacts.map((artifact) => (
-          <ArtifactDocument key={artifact.title} artifact={artifact} />
+          <ArtifactDocument key={artifact.pdfUrl} artifact={artifact} />
         ))}
       </Box>
     </Container>

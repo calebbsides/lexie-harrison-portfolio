@@ -144,7 +144,19 @@ export default function ProjectsSection() {
       <Grid container spacing={3} sx={{ mt: 1 }}>
         {projects.map((project) => (
           <Grid item xs={12} sm={6} md={4} key={project.title}>
-            <Card variant="outlined">
+            <Card
+              variant="outlined"
+              sx={{
+                borderColor: 'rgba(0,105,92,0.2)',
+                borderTop: '4px solid',
+                borderTopColor: 'primary.main',
+                transition: 'box-shadow 0.2s, transform 0.2s',
+                '&:hover': {
+                  boxShadow: '0 8px 24px rgba(0,105,92,0.15)',
+                  borderTopColor: 'primary.light',
+                },
+              }}
+            >
               <CardActionArea
                 component="a"
                 href={project.attachmentUrl}

@@ -21,12 +21,16 @@ export default function LeadershipSection() {
                 variant="outlined"
                 sx={{
                   height: '100%',
-                  borderLeft: '3px solid',
-                  borderColor: 'primary.main',
-                  transition: 'box-shadow 0.2s, border-color 0.2s',
+                  borderColor: 'rgba(0,105,92,0.2)',
+                  borderTop: '4px solid',
+                  borderTopColor: 'primary.main',
+                  transition: 'box-shadow 0.2s, transform 0.2s',
                   ...(activity.assetUrl && {
                     cursor: 'pointer',
-                    '&:hover': { boxShadow: 3, borderColor: 'primary.dark' },
+                    '&:hover': {
+                      boxShadow: '0 8px 24px rgba(0,105,92,0.15)',
+                      borderTopColor: 'primary.light',
+                    },
                   }),
                 }}
                 onClick={activity.assetUrl ? () => window.open(activity.assetUrl, '_blank', 'noopener,noreferrer') : undefined}
