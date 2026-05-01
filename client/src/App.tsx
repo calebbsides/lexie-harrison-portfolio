@@ -54,10 +54,15 @@ export default function App() {
   return (
     <>
       <NavBar items={NAV_ITEMS} activeSection={activeSection} />
-      {NAV_ITEMS.map(({ sectionId, label }, index) => (
+      {NAV_ITEMS.map(({ sectionId, label }, index) => {
+        // index 0 (introduction) manages its own hero background.
+        // From index 1 onward, alternate between white and the default grey.
+        const sectionBg =
+          index === 0 ? undefined : index % 2 === 0 ? "background.paper" : "background.default";
+        return (
         <Box key={sectionId}>
           {index > 0 && <OrnamentalDivider />}
-          <Box id={sectionId} component="section">
+          <Box id={sectionId} component="section" sx={{ bgcolor: sectionBg }}>
             {sectionId === "introduction" ? (
               <IntroductionSection />
             ) : sectionId === "resume" ? (
@@ -81,7 +86,8 @@ export default function App() {
             )}
           </Box>
         </Box>
-      ))}
+        );
+      })}
       <Footer />
     </>
   );

@@ -14,7 +14,7 @@ export interface Project {
 
 export interface LeadershipActivity {
   organization: string;
-  role: string;
+  role: string[];
   description: string;
   assetUrl?: string;
 }

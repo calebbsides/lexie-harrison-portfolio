@@ -19,8 +19,12 @@ export default function CertificationsSection() {
               sx={{
                 height: '100%',
                 cursor: credential.documentUrl ? 'pointer' : 'default',
-                transition: 'box-shadow 0.2s',
-                '&:hover': credential.documentUrl ? { boxShadow: 4 } : {},
+                borderLeft: '3px solid',
+                borderColor: 'primary.main',
+                transition: 'box-shadow 0.2s, border-color 0.2s',
+                '&:hover': credential.documentUrl
+                  ? { boxShadow: 4, borderColor: 'primary.dark' }
+                  : {},
               }}
               onClick={() => {
                 if (credential.documentUrl) {

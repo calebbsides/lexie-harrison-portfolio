@@ -2,7 +2,6 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -21,17 +20,6 @@ export default function Footer() {
         <Typography variant="body2" color="text.secondary">
           © {currentYear} Alexandra Harrison. All rights reserved.
         </Typography>
-        <Link
-          href="https://www.linkedin.com/in/alexandraharrison"
-          target="_blank"
-          rel="noopener noreferrer"
-          color="text.secondary"
-          sx={{ display: 'flex', alignItems: 'center', gap: 0.5, '&:hover': { color: 'primary.main' } }}
-          aria-label="LinkedIn profile"
-        >
-          <LinkedInIcon fontSize="small" />
-          <Typography variant="body2">LinkedIn</Typography>
-        </Link>
       </Container>
     </Box>
   );

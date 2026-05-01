@@ -16,14 +16,17 @@ export default function LeadershipSection() {
       <Grid container spacing={3} sx={{ mt: 1 }}>
         {leadershipActivities.map((activity) => {
           return (
-            <Grid item xs={12} md={6} key={`${activity.organization}-${activity.role}`}>
+            <Grid item xs={12} md={6} key={`${activity.organization}-${activity.role.join(',')}`}>
               <Card
                 variant="outlined"
                 sx={{
                   height: '100%',
+                  borderLeft: '3px solid',
+                  borderColor: 'primary.main',
+                  transition: 'box-shadow 0.2s, border-color 0.2s',
                   ...(activity.assetUrl && {
                     cursor: 'pointer',
-                    '&:hover': { boxShadow: 3 },
+                    '&:hover': { boxShadow: 3, borderColor: 'primary.dark' },
                   }),
                 }}
                 onClick={activity.assetUrl ? () => window.open(activity.assetUrl, '_blank', 'noopener,noreferrer') : undefined}
@@ -32,8 +35,10 @@ export default function LeadershipSection() {
                   <Typography variant="h6" fontWeight="bold" gutterBottom>
                     {activity.organization}
                   </Typography>
-                  <Box sx={{ mb: 1 }}>
-                    <Chip label={activity.role} color="primary" size="small" />
+                  <Box sx={{ mb: 1, display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>
+                    {activity.role.map((r) => (
+                      <Chip key={r} label={r} color="primary" size="small" />
+                    ))}
                   </Box>
                   <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
                     {activity.description}
